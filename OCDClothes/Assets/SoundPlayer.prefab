@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1444524518258102842}
   - component: {fileID: 1444524518258102841}
+  - component: {fileID: 6932018307704099811}
   m_Layer: 0
   m_Name: SoundPlayer
   m_TagString: SoundOn
@@ -127,3 +128,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6932018307704099811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444524518258102840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367862e281f60df4283e9c8e0bf4f342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelfDestructTime: 2

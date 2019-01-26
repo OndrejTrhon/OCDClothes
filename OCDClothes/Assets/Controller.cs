@@ -14,6 +14,8 @@ public class Controller : MonoBehaviour
     void Start()
     {
         StartCoroutine(RepeatSound());
+        
+
     }
 
     // Update is called once per frame
@@ -24,7 +26,7 @@ public class Controller : MonoBehaviour
              Debug.Log("ok");
         }
        repeat = Random.Range(0, 5);
-       Debug.Log(repeat);
+       //Debug.Log(repeat);
     }
 
     IEnumerator RepeatSound() {
@@ -37,11 +39,6 @@ public class Controller : MonoBehaviour
 
     void CreateSoundPlayer() {
         Instantiate(SoundPlayer, Vector3.zero, Quaternion.identity);
-        DestroySoundPlayer();
-    }
-
-    void DestroySoundPlayer() {
-        Destroy(SoundPlayer,destroyTime);
     }
 
 }
