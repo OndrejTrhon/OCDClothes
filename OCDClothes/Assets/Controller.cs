@@ -9,7 +9,8 @@ public class Controller : MonoBehaviour
     public GameObject text1;
     public int time;
     private int repeat = 0;
-    public int destroyTime;
+    private int anxietyLevel = 0;
+    private int clothingLevel = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +24,17 @@ public class Controller : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && GameObject.FindWithTag("SoundOn") != null) {
             Instantiate(text1, Vector3.zero, Quaternion.identity);
-             Debug.Log("ok");
+            anxietyLevel = anxietyLevel +1;
+            clothingLevel = clothingLevel +1;
+             Debug.Log(anxietyLevel);
         }
+
+         if (Input.GetKeyDown(KeyCode.E) && GameObject.FindWithTag("SoundOn") == null) {
+            clothingLevel = clothingLevel +1;
+             Debug.Log(clothingLevel);
+        }
+
+        
        repeat = Random.Range(0, 5);
        //Debug.Log(repeat);
     }
