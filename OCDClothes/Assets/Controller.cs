@@ -23,7 +23,7 @@ public class Controller : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && GameObject.FindWithTag("SoundOn") != null) {
-            Instantiate(text1, Vector3.zero, Quaternion.identity);
+            Instantiate(text1);
             anxietyLevel = anxietyLevel +1;
             clothingLevel = clothingLevel +1;
              Debug.Log(anxietyLevel);
