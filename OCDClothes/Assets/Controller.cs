@@ -24,13 +24,10 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && GameObject.FindWithTag("SoundOn") != null) {
-            Instantiate(text1);
-            anxietyLevel = anxietyLevel +1;
-            clothingLevel = clothingLevel +1;
-             Debug.Log(anxietyLevel);
-        }
+        //Main function that tracks anxiety and future level count??
+       
 
+        //For future level counting?
          if (Input.GetKeyDown(KeyCode.E) && GameObject.FindWithTag("SoundOn") == null) {
             clothingLevel = clothingLevel +1;
              Debug.Log(clothingLevel);
@@ -40,8 +37,9 @@ public class Controller : MonoBehaviour
         {
             if (null != animShirt)
             {
-                // play Bounce but start at a quarter of the way though
+                // Play animation t-shirt state (set to idle upon entry in animation structure)
                 animShirt.Play("animation_tshirt");
+                StartCoroutine(PuttingOn());
             }
         }
 
@@ -61,4 +59,19 @@ public class Controller : MonoBehaviour
         Instantiate(SoundPlayer, Vector3.zero, Quaternion.identity);
     }
 
+    IEnumerator PuttingOn() {
+        float timer = 0f;
+        float time = 5f;
+            while(timer < time && GameObject.FindWithTag("AnxietyUpUp") == null) {
+                timer += Time.deltaTime;
+                 
+                 if (GameObject.FindWithTag("SoundOn") != null) {
+                    Instantiate(text1);
+                    anxietyLevel = anxietyLevel +1;
+                    clothingLevel = clothingLevel +1;
+                Debug.Log(anxietyLevel);
+                }
+            yield return null;
+        }
+    }
 }
