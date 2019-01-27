@@ -43,7 +43,7 @@ public class Controller : MonoBehaviour
             }
         }
 
-       repeat = Random.Range(0, 5);
+       repeat = Random.Range(0, 10);
        //Debug.Log(repeat);
     }
 
@@ -61,7 +61,7 @@ public class Controller : MonoBehaviour
 
     IEnumerator PuttingOn() {
         float timer = 0f;
-        float time = 5f;
+        float time = 3f;
             while(timer < time && GameObject.FindWithTag("AnxietyUpUp") == null) {
                 timer += Time.deltaTime;
                  
