@@ -8,6 +8,8 @@ public class Controller : MonoBehaviour
     public GameObject SoundPlayer;
     public GameObject text1;
     public int time;
+    public Animator animShirt;
+
     private int repeat = 0;
     private int anxietyLevel = 0;
     private int clothingLevel = 0;
@@ -34,7 +36,15 @@ public class Controller : MonoBehaviour
              Debug.Log(clothingLevel);
         }
 
-        
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (null != animShirt)
+            {
+                // play Bounce but start at a quarter of the way though
+                animShirt.Play("animation_tshirt");
+            }
+        }
+
        repeat = Random.Range(0, 5);
        //Debug.Log(repeat);
     }
