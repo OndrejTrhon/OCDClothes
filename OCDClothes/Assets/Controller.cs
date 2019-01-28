@@ -21,16 +21,18 @@ public class Controller : MonoBehaviour
     public GameObject Outro_50pct;
     public GameObject Outro_75pct;
     public GameObject Outro_100pct;
+    public GameObject Outro_pct_texts;
 
     private int repeat = 0;
     private int anxietyLevel = 0;
     private int clothingLevel = 0;
+    private static bool GameStateControl = false;
     // Start is called before the first frame update
     void Start()
     {
         Invoke("ShowIntro1",0);
-        Invoke("ShowIntro2",6);
-        Invoke("ShowIntro3",9);
+        Invoke("ShowIntro2",4);
+        Invoke("ShowIntro3",8);
         Invoke("ShowGame",12);
         
 
@@ -43,19 +45,19 @@ public class Controller : MonoBehaviour
        
         if(InputEnabled) {
 
-        if (Input.GetKeyDown(KeyCode.E) && clothingLevel < 4)
-        {
-            if (null != animShirt)
-            {
+        if (Input.GetKeyDown(KeyCode.E)) {
+
+            if (clothingLevel < 4) {
                 // Play animation t-shirt state (set to idle upon entry in animation structure)
                 animShirt.Play("animation_tshirt");
                 StartCoroutine(PuttingOn());
                 clothingLevel = clothingLevel +1;
             } else {
-                Invoke("ShowOutro1",0);
+                Invoke("ShowOutro1",1);
+
             }
             
-        }
+            } }
 
        repeat = Random.Range(0, 10);
        //Debug.Log(repeat);
@@ -63,7 +65,6 @@ public class Controller : MonoBehaviour
     }
                // Debug.Log(InputEnabled);
 
-    }
     IEnumerator RepeatSound() {
      while (true) {
         CreateSoundPlayer();
@@ -84,8 +85,7 @@ public class Controller : MonoBehaviour
                  
                  if (GameObject.FindWithTag("SoundOn") != null) {
                     Instantiate(text1);
-                    anxietyLevel = anxietyLevel +1;
-                    clothingLevel = clothingLevel +1;
+                    anxietyLevel = anxietyLevel +1; 
                                    Debug.Log("AnxietyLevel " + anxietyLevel);
                                    
                                    Debug.Log("ClothingLevel  " + clothingLevel);
@@ -113,6 +113,7 @@ public class Controller : MonoBehaviour
     void ShowGame() {
                     Intro3.SetActive(false);
                     StartCoroutine(RepeatSound());
+                    GameStateControl = true;
                     InputEnabled = true;
 
 
@@ -146,10 +147,9 @@ public class Controller : MonoBehaviour
 
     }
     void ShowOutro2() {
-                    Intro2.SetActive(false);
-                    Intro3.SetActive(true);
+                    Outro1.SetActive(false);
+                    Outro2.SetActive(true);
+                    Outro_pct_texts.SetActive(false);
                     
-
-
     }
 }

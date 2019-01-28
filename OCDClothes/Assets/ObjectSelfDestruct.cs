@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectSelfDestruct : MonoBehaviour
 {
-    public int SelfDestructTime;
+    public float SelfDestructTime;
     // Start is called before the first frame update
     void Start()
     {

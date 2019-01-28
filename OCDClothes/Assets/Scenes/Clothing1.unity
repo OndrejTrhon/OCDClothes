@@ -163,6 +163,14 @@ MonoBehaviour:
   Intro1: {fileID: 899512264}
   Intro2: {fileID: 389194015}
   Intro3: {fileID: 880241590}
+  Outro1: {fileID: 806726620}
+  Outro2: {fileID: 1399334287}
+  Outro_0pct: {fileID: 1933072126}
+  Outro_25pct: {fileID: 398559614}
+  Outro_50pct: {fileID: 1248785506}
+  Outro_75pct: {fileID: 390687040}
+  Outro_100pct: {fileID: 2061900493}
+  Outro_pct_texts: {fileID: 1423619865}
 --- !u!1 &201408162
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &806726621
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1849,7 +1857,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1829183657}
-  - component: {fileID: 1829183656}
   m_Layer: 0
   m_Name: Outro_scores
   m_TagString: Untagged
@@ -1857,54 +1864,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!212 &1829183656
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829183655}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 1cc2ec0fd4928ed4890de328401e5c85, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!4 &1829183657
 Transform:
   m_ObjectHideFlags: 0
