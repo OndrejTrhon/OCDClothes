@@ -28,9 +28,11 @@ public class Controller : MonoBehaviour
     private int repeat = 0;
     private int anxietyLevel = 0;
     private int clothingLevel = 0;
+    private int GameStateControl = 0;
 
     private int[] delays = new int[] {3, 4, 5, 6};
     private int indexInDelays = 0;
+    private bool Intro = true;
 
     // Start is called before the first frame update
     void Start()
@@ -49,30 +51,32 @@ public class Controller : MonoBehaviour
         //Main function that tracks anxiety and future level count??
        
         if(InputEnabled) {
+            if (Input.GetKeyDown(KeyCode.E)) {
 
-        if (Input.GetKeyDown(KeyCode.E)) {
+                if (clothingLevel < 3) {
+                    InputEnabled = false;
+                    // Play animation t-shirt state (set to idle upon entry in animation structure)
+                    clothingLevel = clothingLevel +1;
+                    animShirt.Play("animace_v2");
+                    StartCoroutine(PuttingOn()); 
+                    Debug.Log("AnxietyLevel " + anxietyLevel);                   
+                    Debug.Log("ClothingLevel  " + clothingLevel);
+                }
+            }     
+        }
 
-            if (clothingLevel < 3) {
-                InputEnabled = false;
-                
-                // Play animation t-shirt state (set to idle upon entry in animation structure)
-                clothingLevel = clothingLevel +1;
-                animShirt.Play("animace_v2");
-                StartCoroutine(PuttingOn());
-                
-               Debug.Log("AnxietyLevel " + anxietyLevel);
-                                   
-                                   Debug.Log("ClothingLevel  " + clothingLevel);
-            } else {
-                Invoke("ShowOutro1",1);
+        if (GameStateControl == 3){
+            InputEnabled = false;
+            Invoke("ShowOutro1",6);
+        }
 
-            }
-            
-            } }
-
-       //repeat = Random.Range(0, 10);
-       //Debug.Log(repeat);
-
+        if (Input.GetKeyDown(KeyCode.F) && Intro == true) {
+            CancelInvoke();
+            Intro1.SetActive(false);
+            Intro2.SetActive(false);
+            Intro3.SetActive(false);
+            ShowGame();
+        }
     }
                // Debug.Log(InputEnabled);
 
@@ -107,6 +111,7 @@ public class Controller : MonoBehaviour
             }
         yield return null;
         }
+        GameStateControl++;
         InputEnabled = true;
     }
 
@@ -123,6 +128,7 @@ public class Controller : MonoBehaviour
     void ShowIntro3() {
         Intro2.SetActive(false);
         Intro3.SetActive(true);
+        Intro = false;
     }
 
     void ShowGame() {
