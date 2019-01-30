@@ -153,11 +153,9 @@ public class Controller : MonoBehaviour
         else if (anxietyLevel == 4) {
             Outro_100pct.SetActive(true);
         }
-
-        Invoke("ShowOutro2", 6);
     }
 
-    void ShowOutro2() {
+    public void ShowOutro2() {
         Outro1.SetActive(false);
         Outro2.SetActive(true);
         Outro_pct_texts.SetActive(false);            
