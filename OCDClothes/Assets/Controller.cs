@@ -53,10 +53,13 @@ public class Controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)) {
 
             if (clothingLevel < 3) {
+                InputEnabled = false;
+                
                 // Play animation t-shirt state (set to idle upon entry in animation structure)
                 clothingLevel = clothingLevel +1;
                 animShirt.Play("animace_v2");
                 StartCoroutine(PuttingOn());
+                
                Debug.Log("AnxietyLevel " + anxietyLevel);
                                    
                                    Debug.Log("ClothingLevel  " + clothingLevel);
@@ -92,19 +95,21 @@ public class Controller : MonoBehaviour
     IEnumerator PuttingOn() {
         float timer = 0f;
         float time = 3f;
-            while(timer < time && GameObject.FindWithTag("AnxietyUpUp") == null) {
+        while(timer < time && GameObject.FindWithTag("AnxietyUpUp") == null) {
                 timer += Time.deltaTime;
                  
-                if (GameObject.FindWithTag("SoundOn") != null) {
+            if (GameObject.FindWithTag("SoundOn") != null) {
                     Instantiate(text1);
                     anxietyLevel = anxietyLevel +1; 
                                    
 
                     //Debug.Log(anxietyLevel);
-                }
-            yield return null;
+            }
+        yield return null;
         }
+        InputEnabled = true;
     }
+
 
     void ShowIntro1() {
         Intro1.SetActive(true);
