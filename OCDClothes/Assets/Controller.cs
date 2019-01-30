@@ -9,8 +9,10 @@ public class Controller : MonoBehaviour
     public GameObject SoundPlayer;
     public GameObject text1;
     
-    public int time;
     public Animator animShirt;
+    public Animator animScarf;
+    public GameObject animShirtObject;
+    public GameObject animScarfObject;
     public GameObject KnockAnim;
 
     public GameObject Intro1;
@@ -57,7 +59,21 @@ public class Controller : MonoBehaviour
                     InputEnabled = false;
                     // Play animation t-shirt state (set to idle upon entry in animation structure)
                     clothingLevel = clothingLevel +1;
-                    animShirt.Play("animace_v2");
+                    if (GameStateControl == 0) {
+                        //float time = 3f;
+                        animShirt.Play("animace_v2");
+                    } else if (GameStateControl == 1){
+                        animShirtObject.SetActive(false);
+                        animScarfObject.SetActive(true);
+                        //float time = 2.5f;
+                        animScarf.Play("anim_scarf");
+
+                    } else if (GameStateControl == 2){
+                        animShirtObject.SetActive(true);
+                        animScarfObject.SetActive(false);
+                        //float time = 3f;
+                        animShirt.Play("animace_v2");  
+                    }
                     StartCoroutine(PuttingOn()); 
                     Debug.Log("AnxietyLevel " + anxietyLevel);                   
                     Debug.Log("ClothingLevel  " + clothingLevel);
