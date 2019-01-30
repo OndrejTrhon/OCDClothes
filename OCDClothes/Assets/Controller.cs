@@ -8,8 +8,10 @@ public class Controller : MonoBehaviour
     public static bool InputEnabled = false;
     public GameObject SoundPlayer;
     public GameObject text1;
+    
     public int time;
     public Animator animShirt;
+    public GameObject KnockAnim;
 
     public GameObject Intro1;
     public GameObject Intro2;
@@ -26,7 +28,6 @@ public class Controller : MonoBehaviour
     private int repeat = 0;
     private int anxietyLevel = 0;
     private int clothingLevel = 0;
-    private static bool GameStateControl = false;
 
     private int[] delays = new int[] {3, 4, 5, 6};
     private int indexInDelays = 0;
@@ -54,7 +55,7 @@ public class Controller : MonoBehaviour
             if (clothingLevel < 3) {
                 // Play animation t-shirt state (set to idle upon entry in animation structure)
                 clothingLevel = clothingLevel +1;
-                animShirt.Play("animation_tshirt");
+                animShirt.Play("animace_v2");
                 StartCoroutine(PuttingOn());
                Debug.Log("AnxietyLevel " + anxietyLevel);
                                    
@@ -78,13 +79,14 @@ public class Controller : MonoBehaviour
             
             indexInDelays += 1; 
             indexInDelays = indexInDelays % delays.Length; 
-            reapat = delays[indexInDelays]; 
+            repeat = delays[indexInDelays]; 
             yield return new WaitForSeconds(repeat);
         }
     }
 
     void CreateSoundPlayer() {
         Instantiate(SoundPlayer, Vector3.zero, Quaternion.identity);
+        Instantiate(KnockAnim);
     }
 
     IEnumerator PuttingOn() {
@@ -120,8 +122,7 @@ public class Controller : MonoBehaviour
 
     void ShowGame() {
         Intro3.SetActive(false);
-        StartCoroutine(RepeatSound());
-        GameStateControl = true;
+        StartCoroutine(RepeatSound());  
         InputEnabled = true;
     }
     	
