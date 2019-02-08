@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,9 +11,19 @@ public class Controller : MonoBehaviour
     
     public Animator animShirt;
     public Animator animScarf;
+    public Animator animHat;
     public GameObject animShirtObject;
     public GameObject animScarfObject;
+    public GameObject animHatObject;
     public GameObject KnockAnim;
+
+    public GameObject SweaterCheckClean;
+    public GameObject SweaterCheckCrossed;
+    public GameObject ScarfCheckClean;
+    public GameObject ScarfCheckCrossed;
+    public GameObject HatCheckClean;
+    public GameObject HatCheckCrossed;
+    
 
     public GameObject Intro1;
     public GameObject Intro2;
@@ -60,19 +70,25 @@ public class Controller : MonoBehaviour
                     // Play animation t-shirt state (set to idle upon entry in animation structure)
                     clothingLevel = clothingLevel +1;
                     if (GameStateControl == 0) {
+                        SweaterCheckClean.SetActive(false);
+                        SweaterCheckCrossed.SetActive(true);
                         //float time = 3f;
-                        animShirt.Play("animace_v2");
+                        animShirt.Play("animace_start");
                     } else if (GameStateControl == 1){
+                        ScarfCheckClean.SetActive(false);
+                        ScarfCheckCrossed.SetActive(true);
                         animShirtObject.SetActive(false);
                         animScarfObject.SetActive(true);
                         //float time = 2.5f;
-                        animScarf.Play("anim_scarf");
+                        animScarf.Play("animace_start");
 
                     } else if (GameStateControl == 2){
-                        animShirtObject.SetActive(true);
+                        HatCheckClean.SetActive(false);
+                        HatCheckCrossed.SetActive(true);
                         animScarfObject.SetActive(false);
+                        animHatObject.SetActive(true);
                         //float time = 3f;
-                        animShirt.Play("animace_v2");  
+                        animHat.Play("animace_start");  
                     }
                     StartCoroutine(PuttingOn()); 
                     Debug.Log("AnxietyLevel " + anxietyLevel);                   
