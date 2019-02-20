@@ -6,9 +6,13 @@ public class Controller : MonoBehaviour
 
 {
     public static bool InputEnabled = false;
-    public GameObject SoundPlayer;
-    public GameObject text1;
+    public GameObject SoundPlayer; 
+    public GameObject SoundPlayer2;
+    public GameObject SoundPlayer3;
+    public GameObject SoundPlayer4;
     
+       
+    public GameObject text1;
     public Animator animShirt;
     public Animator animScarf;
     public Animator animHat;
@@ -28,6 +32,9 @@ public class Controller : MonoBehaviour
     public GameObject Intro1;
     public GameObject Intro2;
     public GameObject Intro3;
+    public GameObject Intro4;
+    public GameObject Intro5;
+    public GameObject Intro6;
     public GameObject Outro1;
     public GameObject Outro2;
     public GameObject Outro_0pct;
@@ -41,6 +48,7 @@ public class Controller : MonoBehaviour
     private int anxietyLevel = 0;
     private int clothingLevel = 0;
     private int GameStateControl = 0;
+    private int IntroState = 0;
 
     private int[] delays = new int[] {3, 4, 5, 6};
     private int indexInDelays = 0;
@@ -49,10 +57,7 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("ShowIntro1",0);
-        Invoke("ShowIntro2",6);
-        Invoke("ShowIntro3",11);
-        Invoke("ShowGame",16);
+        ShowIntro1();
 
         repeat = delays[indexInDelays];
     }
@@ -60,6 +65,34 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //intro fucnction used to call splashscreens
+        if(Intro == true) {
+            if (Input.GetKeyDown(KeyCode.F)) {
+
+                if (IntroState == 0) {
+                    ShowIntro2();
+                    IntroState++;    
+                } else if (IntroState == 1){
+                    ShowIntro3();
+                    IntroState++; 
+                } else if (IntroState == 2) {
+                    ShowIntro4();
+                    IntroState++; 
+                } else if (IntroState == 3) {
+                    ShowIntro5();
+                    IntroState++; 
+                } else if (IntroState == 4) {
+                    ShowIntro6();
+                    IntroState++; 
+                } else if (IntroState == 5) {
+                    ShowGame();
+                    IntroState++; 
+                } 
+                }
+            }    
+
+        
         //Main function that tracks anxiety and future level count??
        
         if(InputEnabled) {
@@ -102,11 +135,13 @@ public class Controller : MonoBehaviour
             Invoke("ShowOutro1",6);
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && Intro == true) {
+        if (Input.GetKeyDown(KeyCode.X) && Intro == true) {
             CancelInvoke();
             Intro1.SetActive(false);
             Intro2.SetActive(false);
             Intro3.SetActive(false);
+            Intro4.SetActive(false);
+            Intro5.SetActive(false);
             ShowGame();
         }
     }
@@ -114,7 +149,18 @@ public class Controller : MonoBehaviour
 
     IEnumerator RepeatSound() {
         while (true) {
-            CreateSoundPlayer();
+            if (indexInDelays == 1) {
+                 CreateSoundPlayer(SoundPlayer);
+            
+            } else if (indexInDelays == 2) {
+                 CreateSoundPlayer(SoundPlayer2);
+            
+            } else if (indexInDelays == 3) {
+                 CreateSoundPlayer(SoundPlayer3);
+            
+            } else if (indexInDelays == 4) {
+                 CreateSoundPlayer(SoundPlayer4);
+            }
             
             indexInDelays += 1; 
             indexInDelays = indexInDelays % delays.Length; 
@@ -123,14 +169,27 @@ public class Controller : MonoBehaviour
         }
     }
 
-    void CreateSoundPlayer() {
-        Instantiate(SoundPlayer, Vector3.zero, Quaternion.identity);
+    void CreateSoundPlayer(GameObject SuddenSoundSource) {
+        
+        Instantiate(SuddenSoundSource, Vector3.zero, Quaternion.identity);
         Instantiate(KnockAnim);
     }
 
     IEnumerator PuttingOn() {
         float timer = 0f;
-        float time = 3f;
+        float time = 1f;
+
+         if (GameStateControl == 0) {
+                        time = 4.1f;
+                        Debug.Log(time);
+        } else if (GameStateControl == 1){
+                        time = 3.6f;
+                        Debug.Log(time);
+        } else if (GameStateControl == 2){
+                       time = 3.2f;
+                        Debug.Log(time);
+        }
+
         while(timer < time && GameObject.FindWithTag("AnxietyUpUp") == null) {
                 timer += Time.deltaTime;
                  
@@ -160,11 +219,26 @@ public class Controller : MonoBehaviour
     void ShowIntro3() {
         Intro2.SetActive(false);
         Intro3.SetActive(true);
-        Intro = false;
+    }
+
+    void ShowIntro4() {
+        Intro3.SetActive(false);
+        Intro4.SetActive(true);
+    }
+
+    void ShowIntro5() {
+        Intro4.SetActive(false);
+        Intro5.SetActive(true);
+    }
+
+    void ShowIntro6() {
+        Intro5.SetActive(false);
+        Intro6.SetActive(true);
     }
 
     void ShowGame() {
-        Intro3.SetActive(false);
+        Intro = false;
+        Intro6.SetActive(false);
         StartCoroutine(RepeatSound());  
         InputEnabled = true;
     }
@@ -195,7 +269,8 @@ public class Controller : MonoBehaviour
 
     public void ShowOutro2() {
         Outro1.SetActive(false);
+        Outro_pct_texts.SetActive(false);
         Outro2.SetActive(true);
-        Outro_pct_texts.SetActive(false);            
+                    
     }
 }
