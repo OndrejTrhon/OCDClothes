@@ -35,14 +35,15 @@ public class Controller : MonoBehaviour
     public GameObject Intro4;
     public GameObject Intro5;
     public GameObject Intro6;
+    public GameObject ScoreScreen;
     public GameObject Outro1;
     public GameObject Outro2;
-    public GameObject Outro_0pct;
-    public GameObject Outro_25pct;
-    public GameObject Outro_50pct;
-    public GameObject Outro_75pct;
-    public GameObject Outro_100pct;
-    public GameObject Outro_pct_texts;
+    public GameObject Score_0pct;
+    public GameObject Score_25pct;
+    public GameObject Score_50pct;
+    public GameObject Score_75pct;
+    public GameObject Score_100pct;
+    public GameObject Score_pct_texts;
 
     private int repeat = 0;
     private int anxietyLevel = 0;
@@ -97,9 +98,9 @@ public class Controller : MonoBehaviour
        
         if(InputEnabled) {
             if (Input.GetKeyDown(KeyCode.E)) {
+                InputEnabled = false;
 
                 if (clothingLevel < 3) {
-                    InputEnabled = false;
                     // Play animation t-shirt state (set to idle upon entry in animation structure)
                     clothingLevel = clothingLevel +1;
                     if (GameStateControl == 0) {
@@ -132,7 +133,7 @@ public class Controller : MonoBehaviour
 
         if (GameStateControl == 3){
             InputEnabled = false;
-            Invoke("ShowOutro1",6);
+            Invoke("ShowScoreScreen",5);
         }
 
         if (Input.GetKeyDown(KeyCode.X) && Intro == true) {
@@ -243,33 +244,39 @@ public class Controller : MonoBehaviour
         InputEnabled = true;
     }
     	
-    void ShowOutro1() {
+    void ShowScoreScreen() {
     
         StopCoroutine(RepeatSound());
         
         InputEnabled = false;
-        Outro1.SetActive(true);
+        ScoreScreen.SetActive(true);
 
         if (anxietyLevel == 0) {
-            Outro_0pct.SetActive(true);
+            Score_0pct.SetActive(true);
         }
         else if (anxietyLevel == 1) {
-            Outro_25pct.SetActive(true);
+            Score_25pct.SetActive(true);
         }
         else if (anxietyLevel == 2) {
-            Outro_50pct.SetActive(true);
+            Score_50pct.SetActive(true);
         }
         else if (anxietyLevel == 3) {
-            Outro_75pct.SetActive(true);
+            Score_75pct.SetActive(true);
         }
         else if (anxietyLevel == 4) {
-            Outro_100pct.SetActive(true);
+            Score_100pct.SetActive(true);
         }
+    }
+
+    public void ShowOutro1() {
+        ScoreScreen.SetActive(false);
+        Score_pct_texts.SetActive(false);
+        Outro1.SetActive(true);
+                    
     }
 
     public void ShowOutro2() {
         Outro1.SetActive(false);
-        Outro_pct_texts.SetActive(false);
         Outro2.SetActive(true);
                     
     }

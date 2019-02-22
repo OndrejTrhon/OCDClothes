@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 6932018307704099811, guid: 024bcab20ae97d84c9f632fb7114960a,
         type: 3}
       propertyPath: SelfDestructTime
-      value: 0.906
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 024bcab20ae97d84c9f632fb7114960a, type: 3}

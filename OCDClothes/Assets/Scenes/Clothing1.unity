@@ -141,6 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee795616a896c1143984d1cb62321fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreScreen: {fileID: 806726620}
+  Outro1: {fileID: 1399334287}
+  Outro2: {fileID: 2015572678}
+  Score_pct_texts: {fileID: 1829183655}
 --- !u!4 &35361754
 Transform:
   m_ObjectHideFlags: 0
@@ -306,14 +310,15 @@ MonoBehaviour:
   Intro4: {fileID: 694974619}
   Intro5: {fileID: 1615277545}
   Intro6: {fileID: 860787160}
-  Outro1: {fileID: 806726620}
-  Outro2: {fileID: 1399334287}
-  Outro_0pct: {fileID: 1933072126}
-  Outro_25pct: {fileID: 398559614}
-  Outro_50pct: {fileID: 1248785506}
-  Outro_75pct: {fileID: 390687040}
-  Outro_100pct: {fileID: 2061900493}
-  Outro_pct_texts: {fileID: 1423619865}
+  ScoreScreen: {fileID: 806726620}
+  Outro1: {fileID: 1399334287}
+  Outro2: {fileID: 2015572678}
+  Score_0pct: {fileID: 1933072126}
+  Score_25pct: {fileID: 398559614}
+  Score_50pct: {fileID: 1248785506}
+  Score_75pct: {fileID: 390687040}
+  Score_100pct: {fileID: 2061900493}
+  Score_pct_texts: {fileID: 1829183655}
 --- !u!1 &201408162
 GameObject:
   m_ObjectHideFlags: 0
@@ -3474,7 +3479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1829183657}
   m_Layer: 0
-  m_Name: Scores
+  m_Name: Score_texts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
