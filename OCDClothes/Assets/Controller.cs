@@ -125,8 +125,8 @@ public class Controller : MonoBehaviour
                         animHat.Play("animace_start");  
                     }
                     StartCoroutine(PuttingOn()); 
-                    Debug.Log("AnxietyLevel " + anxietyLevel);                   
-                    Debug.Log("ClothingLevel  " + clothingLevel);
+                    //Debug.Log("AnxietyLevel " + anxietyLevel);                   
+                    //Debug.Log("ClothingLevel  " + clothingLevel);
                 }
             }     
         }
@@ -177,6 +177,7 @@ public class Controller : MonoBehaviour
     }
 
     IEnumerator PuttingOn() {
+        Debug.Log("Putting on start");
         float timer = 0f;
         float time = 1f;
 
@@ -204,6 +205,7 @@ public class Controller : MonoBehaviour
         yield return null;
         }
         GameStateControl++;
+        Debug.Log("Putting on end");
         InputEnabled = true;
     }
 
