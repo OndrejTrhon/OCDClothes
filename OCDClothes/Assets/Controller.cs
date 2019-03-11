@@ -10,6 +10,7 @@ public class Controller : MonoBehaviour
     public GameObject SoundPlayer2;
     public GameObject SoundPlayer3;
     public GameObject SoundPlayer4;
+    public GameObject SoundChecker;
     
        
     public GameObject text1;
@@ -173,6 +174,7 @@ public class Controller : MonoBehaviour
     void CreateSoundPlayer(GameObject SuddenSoundSource) {
         
         Instantiate(SuddenSoundSource, Vector3.zero, Quaternion.identity);
+        Instantiate(SoundChecker, Vector3.zero, Quaternion.identity);
         Instantiate(KnockAnim);
     }
 

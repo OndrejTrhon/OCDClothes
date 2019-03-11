@@ -289,6 +289,8 @@ MonoBehaviour:
     type: 3}
   SoundPlayer4: {fileID: 1153672036348397858, guid: 7ceb6eeb6624d484b8edc413350b70b6,
     type: 3}
+  SoundChecker: {fileID: 6248027480925529513, guid: 81eadeacd395183469d951df94be94d3,
+    type: 3}
   text1: {fileID: 5829139032158356782, guid: a786f265545e0bd42be2af5c3d2e6619, type: 3}
   animShirt: {fileID: 1918238483}
   animScarf: {fileID: 1167084912}
