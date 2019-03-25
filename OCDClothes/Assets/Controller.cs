@@ -11,6 +11,7 @@ public class Controller : MonoBehaviour
     public GameObject SoundPlayer3;
     public GameObject SoundPlayer4;
     public GameObject SoundChecker;
+
     
        
     public GameObject text1;
@@ -134,7 +135,7 @@ public class Controller : MonoBehaviour
 
         if (GameStateControl == 3){
             InputEnabled = false;
-            Invoke("ShowScoreScreen",5);
+            Invoke("ShowScoreScreen",3);
         }
 
         if (Input.GetKeyDown(KeyCode.X) && Intro == true) {
@@ -146,6 +147,7 @@ public class Controller : MonoBehaviour
             Intro5.SetActive(false);
             ShowGame();
         }
+
     }
                // Debug.Log(InputEnabled);
 
@@ -255,6 +257,7 @@ public class Controller : MonoBehaviour
         InputEnabled = false;
         ScoreScreen.SetActive(true);
 
+
         if (anxietyLevel == 0) {
             Score_0pct.SetActive(true);
         }
@@ -284,4 +287,6 @@ public class Controller : MonoBehaviour
         Outro2.SetActive(true);
                     
     }
+
+    
 }

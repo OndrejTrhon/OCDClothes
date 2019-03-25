@@ -14,8 +14,6 @@ public class QuitRestart : MonoBehaviour
 
   public void QuitGame () {
       ShowOutro1();
-      Invoke("ShowOutro2",6);
-      Invoke("Quit",9);
     
 }
     public void RestartGame() {
@@ -27,12 +25,14 @@ public class QuitRestart : MonoBehaviour
         ScoreScreen.SetActive(false);
         Score_pct_texts.SetActive(false);
         Outro1.SetActive(true);
+        Invoke("ShowOutro2",3);
                     
     }
 
     public void ShowOutro2() {
         Outro1.SetActive(false);
         Outro2.SetActive(true);
+        Invoke("Quit",3);
                     
     }
 
