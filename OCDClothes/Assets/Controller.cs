@@ -30,6 +30,10 @@ public class Controller : MonoBehaviour
     public GameObject HatCheckClean;
     public GameObject HatCheckCrossed;
     
+    public GameObject name1;
+    public GameObject name2; 
+    public GameObject Intro0;
+
 
     public GameObject Intro1;
     public GameObject Intro2;
@@ -55,12 +59,12 @@ public class Controller : MonoBehaviour
 
     private int[] delays = new int[] {3, 4, 5, 6};
     private int indexInDelays = 0;
-    private bool Intro = true;
+    private bool Intro = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        ShowIntro1();
+        ShowName();
 
         repeat = delays[indexInDelays];
     }
@@ -74,21 +78,27 @@ public class Controller : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F)) {
 
                 if (IntroState == 0) {
-                    ShowIntro2();
+                    ShowIntro0();
                     IntroState++;    
                 } else if (IntroState == 1){
-                    ShowIntro3();
+                    ShowIntro1();
                     IntroState++; 
                 } else if (IntroState == 2) {
-                    ShowIntro4();
+                    ShowIntro2();
                     IntroState++; 
                 } else if (IntroState == 3) {
-                    ShowIntro5();
+                    ShowIntro3();
                     IntroState++; 
                 } else if (IntroState == 4) {
-                    ShowIntro6();
+                    ShowIntro4();
                     IntroState++; 
                 } else if (IntroState == 5) {
+                    ShowIntro5();
+                    IntroState++; 
+                } else if (IntroState == 6) {
+                    ShowIntro6();
+                    IntroState++; 
+                }else if (IntroState == 7) {
                     ShowGame();
                     IntroState++; 
                 } 
@@ -140,11 +150,13 @@ public class Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X) && Intro == true) {
             CancelInvoke();
+            Intro0.SetActive(false);
             Intro1.SetActive(false);
             Intro2.SetActive(false);
             Intro3.SetActive(false);
             Intro4.SetActive(false);
             Intro5.SetActive(false);
+            Intro6.SetActive(false);
             ShowGame();
         }
 
@@ -213,8 +225,26 @@ public class Controller : MonoBehaviour
         InputEnabled = true;
     }
 
+    void ShowName() {
+        name1.SetActive(true);
+        Invoke("ShowName2",3);
+    }
+
+    void ShowName2() {
+        name1.SetActive(false);
+        name2.SetActive(true);
+        Invoke("ShowIntro0",3);
+    }
+
+
+    void ShowIntro0() {
+        Intro = true;
+        name2.SetActive(false);
+        Intro0.SetActive(true);
+    }
 
     void ShowIntro1() {
+        Intro0.SetActive(false);
         Intro1.SetActive(true);
     }
     
@@ -259,16 +289,16 @@ public class Controller : MonoBehaviour
 
 
         if (anxietyLevel == 0) {
-            Score_0pct.SetActive(true);
-        }
-        else if (anxietyLevel == 1) {
             Score_25pct.SetActive(true);
         }
-        else if (anxietyLevel == 2) {
+        else if (anxietyLevel == 1) {
             Score_50pct.SetActive(true);
         }
-        else if (anxietyLevel == 3) {
+        else if (anxietyLevel == 2) {
             Score_75pct.SetActive(true);
+        }
+        else if (anxietyLevel == 3) {
+            Score_100pct.SetActive(true);
         }
         else if (anxietyLevel == 4) {
             Score_100pct.SetActive(true);
